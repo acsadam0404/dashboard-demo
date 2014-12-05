@@ -121,7 +121,7 @@ public class DummyDataProvider implements DataProvider {
             } else {
                 // TODO: Get an API key from
                 // http://developer.rottentomatoes.com
-                String apiKey = "xxxxxxxxxxxxxxxxxxxxxxxx";
+                String apiKey = "e9465dtaz3zr8qqp7fbmngb9";
                 json = readJsonFromUrl("http://api.rottentomatoes.com/api/public/v1.0/lists/movies/in_theaters.json?page_limit=30&apikey="
                         + apiKey);
                 // Store in cache
