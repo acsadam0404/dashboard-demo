@@ -5,10 +5,6 @@ import java.util.Iterator;
 
 import com.google.common.eventbus.Subscribe;
 import com.vaadin.demo.dashboard.DashboardUI;
-import com.vaadin.demo.dashboard.component.SparklineChart;
-import com.vaadin.demo.dashboard.component.TopGrossingMoviesChart;
-import com.vaadin.demo.dashboard.component.TopSixTheatersChart;
-import com.vaadin.demo.dashboard.component.TopTenMoviesTable;
 import com.vaadin.demo.dashboard.data.dummy.DummyDataGenerator;
 import com.vaadin.demo.dashboard.domain.DashboardNotification;
 import com.vaadin.demo.dashboard.event.DashboardEvent.CloseOpenWindowsEvent;
@@ -36,6 +32,7 @@ import com.vaadin.ui.MenuBar.MenuItem;
 import com.vaadin.ui.Notification;
 import com.vaadin.ui.Panel;
 import com.vaadin.ui.TextArea;
+import com.vaadin.ui.TextField;
 import com.vaadin.ui.VerticalLayout;
 import com.vaadin.ui.Window;
 import com.vaadin.ui.themes.ValoTheme;
@@ -67,8 +64,6 @@ public final class DashboardView extends Panel implements View,
 
         root.addComponent(buildHeader());
 
-        root.addComponent(buildSparklines());
-
         Component content = buildContent();
         root.addComponent(content);
         root.setExpandRatio(content, 1);
@@ -83,30 +78,6 @@ public final class DashboardView extends Panel implements View,
         });
     }
 
-    private Component buildSparklines() {
-        CssLayout sparks = new CssLayout();
-        sparks.addStyleName("sparks");
-        sparks.setWidth("100%");
-        Responsive.makeResponsive(sparks);
-
-        SparklineChart s = new SparklineChart("Traffic", "K", "",
-                DummyDataGenerator.chartColors[0], 22, 20, 80);
-        sparks.addComponent(s);
-
-        s = new SparklineChart("Revenue / Day", "M", "$",
-                DummyDataGenerator.chartColors[2], 8, 89, 150);
-        sparks.addComponent(s);
-
-        s = new SparklineChart("Checkout Time", "s", "",
-                DummyDataGenerator.chartColors[3], 10, 30, 120);
-        sparks.addComponent(s);
-
-        s = new SparklineChart("Theater Fill Rate", "%", "",
-                DummyDataGenerator.chartColors[5], 50, 34, 100);
-        sparks.addComponent(s);
-
-        return sparks;
-    }
 
     private Component buildHeader() {
         HorizontalLayout header = new HorizontalLayout();
@@ -173,9 +144,7 @@ public final class DashboardView extends Panel implements View,
     }
 
     private Component buildTopGrossingMovies() {
-        TopGrossingMoviesChart topGrossingMoviesChart = new TopGrossingMoviesChart();
-        topGrossingMoviesChart.setSizeFull();
-        return createContentWrapper(topGrossingMoviesChart);
+        return createContentWrapper(new TextField());
     }
 
     private Component buildNotes() {
@@ -189,13 +158,13 @@ public final class DashboardView extends Panel implements View,
     }
 
     private Component buildTop10TitlesByRevenue() {
-        Component contentWrapper = createContentWrapper(new TopTenMoviesTable());
+        Component contentWrapper = createContentWrapper(new TextField());
         contentWrapper.addStyleName("top10-revenue");
         return contentWrapper;
     }
 
     private Component buildPopularMovies() {
-        return createContentWrapper(new TopSixTheatersChart());
+        return createContentWrapper(new TextField());
     }
 
     private Component createContentWrapper(final Component content) {
