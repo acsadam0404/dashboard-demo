@@ -1,8 +1,5 @@
 package com.vaadin.demo.dashboard.event;
 
-import java.util.Collection;
-
-import com.vaadin.demo.dashboard.domain.Transaction;
 import com.vaadin.demo.dashboard.view.DashboardViewType;
 
 /*
@@ -39,30 +36,6 @@ public abstract class DashboardEvent {
     public static class NotificationsCountUpdatedEvent {
     }
 
-    public static final class ReportsCountUpdatedEvent {
-        private final int count;
-
-        public ReportsCountUpdatedEvent(final int count) {
-            this.count = count;
-        }
-
-        public int getCount() {
-            return count;
-        }
-
-    }
-
-    public static final class TransactionReportEvent {
-        private final Collection<Transaction> transactions;
-
-        public TransactionReportEvent(final Collection<Transaction> transactions) {
-            this.transactions = transactions;
-        }
-
-        public Collection<Transaction> getTransactions() {
-            return transactions;
-        }
-    }
 
     public static final class PostViewChangeEvent {
         private final DashboardViewType view;
@@ -77,9 +50,6 @@ public abstract class DashboardEvent {
     }
 
     public static class CloseOpenWindowsEvent {
-    }
-
-    public static class ProfileUpdatedEvent {
     }
 
 }

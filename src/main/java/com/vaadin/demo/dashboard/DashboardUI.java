@@ -27,7 +27,7 @@ import com.vaadin.ui.Window;
 
 @Theme("dashboard")
 @Widgetset("com.vaadin.demo.dashboard.DashboardWidgetSet")
-@Title("QuickTickets Dashboard")
+@Title("Custom title")
 @SuppressWarnings("serial")
 public final class DashboardUI extends UI {
 
